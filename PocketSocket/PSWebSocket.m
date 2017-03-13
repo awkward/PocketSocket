@@ -36,15 +36,18 @@
     BOOL _closeWhenFinishedOutput;
     BOOL _sentClose;
     BOOL _failed;
-    BOOL _pumpingInput;
-    BOOL _pumpingOutput;
     BOOL _inputPaused;
     BOOL _outputPaused;
     NSInteger _closeCode;
     NSString *_closeReason;
     NSMutableArray *_pingHandlers;
 }
+
+@property (atomic, assign) BOOL pumpingInput;
+@property (atomic, assign) BOOL pumpingOutput;
+
 @end
+
 @implementation PSWebSocket
 
 #pragma mark - Class Methods
@@ -130,8 +133,8 @@
         _closeWhenFinishedOutput = NO;
         _sentClose = NO;
         _failed = NO;
-        _pumpingInput = NO;
-        _pumpingOutput = NO;
+        self.pumpingInput = NO;
+        self.pumpingOutput = NO;
         _closeCode = 0;
         _closeReason = nil;
         _pingHandlers = [NSMutableArray array];
@@ -413,13 +416,13 @@
 
 - (void)pumpInput {
     if(_readyState >= PSWebSocketReadyStateClosing ||
-       _pumpingInput ||
+       self.pumpingInput ||
        _inputPaused ||
        !_inputStream.hasBytesAvailable) {
         return;
     }
 
-    _pumpingInput = YES;
+    self.pumpingInput = YES;
     @autoreleasepool {
         uint8_t chunkBuffer[4096];
         NSInteger readLength = [_inputStream read:chunkBuffer maxLength:sizeof(chunkBuffer)];
@@ -454,16 +457,16 @@
             [self notifyDelegateDidFlushInput];
         }
     }
-    _pumpingInput = NO;
+    self.pumpingInput = NO;
 }
 
 - (void)pumpOutput {
-    if(_pumpingInput ||
+    if(self.pumpingInput ||
        _outputPaused) {
         return;
     }
     
-    _pumpingOutput = YES;
+    self.pumpingOutput = YES;
     do {
         while(_outputStream.hasSpaceAvailable && _outputBuffer.hasBytesAvailable) {
             NSInteger writeLength = [_outputStream write:_outputBuffer.bytes maxLength:_outputBuffer.bytesAvailable];
@@ -500,7 +503,7 @@
         }
         
     } while (_outputStream.hasSpaceAvailable && _outputBuffer.hasBytesAvailable);
-    _pumpingOutput = NO;
+    self.pumpingOutput = NO;
 }
 
 #pragma mark - Failing

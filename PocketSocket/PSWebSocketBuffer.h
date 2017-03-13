@@ -19,8 +19,8 @@
 
 #pragma mark - Properties
 
-@property (nonatomic, assign) NSInteger offset;
-@property (nonatomic, assign) NSUInteger compactionLength;
+@property (atomic, assign) NSInteger offset;
+@property (atomic, assign) NSUInteger compactionLength;
 
 #pragma mark - Actions
 
