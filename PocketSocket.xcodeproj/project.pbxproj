@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0076F9361E93E10B00E35CD0 /* PSWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E35118B37DF300BAE47A /* PSWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0076F9371E93E10E00E35CD0 /* PSWebSocketServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0076F9381E93E11000E35CD0 /* PSWebSocketDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E33318B37DEC00BAE47A /* PSWebSocketDriver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0076F9391E93E11400E35CD0 /* PSWebSocketTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E33D18B37DEC00BAE47A /* PSWebSocketTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00CF692E1E93C3B40067DB2A /* PSWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E35118B37DF300BAE47A /* PSWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00CF692F1E93C3B60067DB2A /* PSWebSocketServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00CF69301E93C3B90067DB2A /* PSWebSocketDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E33318B37DEC00BAE47A /* PSWebSocketDriver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		00CF69311E93C3BC0067DB2A /* PSWebSocketTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E33D18B37DEC00BAE47A /* PSWebSocketTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275D3ADB1B02811E0013B9A9 /* PSWebSocketBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE5E33818B37DEC00BAE47A /* PSWebSocketBuffer.m */; };
 		275D3ADC1B02811E0013B9A9 /* PSWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE5E35218B37DF300BAE47A /* PSWebSocket.m */; };
 		275D3ADD1B02811E0013B9A9 /* PSWebSocketUTF8Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE5E34218B37DEC00BAE47A /* PSWebSocketUTF8Decoder.m */; };
@@ -82,7 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		275D3AE91B02811E0013B9A9 /* libPocketSocket-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPocketSocket-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		275D3AE91B02811E0013B9A9 /* libPocketSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPocketSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebSocketServer.h; sourceTree = "<group>"; };
 		EE2A05DA18B5BBEC0066EEA4 /* PSWebSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWebSocketServer.m; sourceTree = "<group>"; };
 		EE337EC518B4AE28003F95B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -212,7 +220,7 @@
 			children = (
 				EEE5E30A18B37DD500BAE47A /* libPocketSocket.a */,
 				EEE5E36018B37F8700BAE47A /* PSAutobahnClientTests.xctest */,
-				275D3AE91B02811E0013B9A9 /* libPocketSocket-Mac.a */,
+				275D3AE91B02811E0013B9A9 /* libPocketSocket.a */,
 				EE453D0F1CABF60300A2EA13 /* PSAutobahnServerTests.app */,
 			);
 			name = Products;
@@ -299,6 +307,31 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0076F9351E93E0FB00E35CD0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0076F9361E93E10B00E35CD0 /* PSWebSocket.h in Headers */,
+				0076F9371E93E10E00E35CD0 /* PSWebSocketServer.h in Headers */,
+				0076F9381E93E11000E35CD0 /* PSWebSocketDriver.h in Headers */,
+				0076F9391E93E11400E35CD0 /* PSWebSocketTypes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00CF692D1E93C3A30067DB2A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00CF692E1E93C3B40067DB2A /* PSWebSocket.h in Headers */,
+				00CF692F1E93C3B60067DB2A /* PSWebSocketServer.h in Headers */,
+				00CF69301E93C3B90067DB2A /* PSWebSocketDriver.h in Headers */,
+				00CF69311E93C3BC0067DB2A /* PSWebSocketTypes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		275D3AD91B02811E0013B9A9 /* PocketSocket-Mac */ = {
 			isa = PBXNativeTarget;
@@ -307,6 +340,7 @@
 				275D3ADA1B02811E0013B9A9 /* Sources */,
 				275D3AE31B02811E0013B9A9 /* Frameworks */,
 				275D3AE51B02811E0013B9A9 /* CopyFiles */,
+				00CF692D1E93C3A30067DB2A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -314,7 +348,7 @@
 			);
 			name = "PocketSocket-Mac";
 			productName = PocketSocket;
-			productReference = 275D3AE91B02811E0013B9A9 /* libPocketSocket-Mac.a */;
+			productReference = 275D3AE91B02811E0013B9A9 /* libPocketSocket.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		EE453D0E1CABF60300A2EA13 /* PSAutobahnServerTests */ = {
@@ -341,6 +375,7 @@
 				EEE5E30618B37DD500BAE47A /* Sources */,
 				EEE5E30718B37DD500BAE47A /* Frameworks */,
 				EEE5E30818B37DD500BAE47A /* CopyFiles */,
+				0076F9351E93E0FB00E35CD0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -531,7 +566,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketSocket/PocketSocket-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "PocketSocket-Mac";
+				PRODUCT_NAME = PocketSocket;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = x86_64;
@@ -546,7 +582,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PocketSocket/PocketSocket-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "PocketSocket-Mac";
+				PRODUCT_NAME = PocketSocket;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = x86_64;
@@ -699,6 +736,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
@@ -724,6 +762,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
