@@ -735,11 +735,6 @@
 		EEE5E32E18B37DD600BAE47A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ARCHS[sdk=iphoneos*]" = (
-					arm64,
-					armv7,
-				);
-				"ARCHS[sdk=macosx*]" = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/PocketSocket.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -749,23 +744,15 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
-				VALID_ARCHS = "x86_64 arm64 armv7s armv7";
-				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7s armv7";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 			};
 			name = Debug;
 		};
 		EEE5E32F18B37DD600BAE47A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"ARCHS[sdk=iphoneos*]" = (
-					arm64,
-					armv7,
-				);
-				"ARCHS[sdk=macosx*]" = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/PocketSocket.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -775,12 +762,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
-				VALID_ARCHS = "x86_64 arm64 armv7s armv7";
-				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7s armv7";
-				"VALID_ARCHS[sdk=macosx*]" = x86_64;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 			};
 			name = Release;
 		};
