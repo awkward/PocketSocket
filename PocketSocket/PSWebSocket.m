@@ -217,7 +217,7 @@
 
 - (void)open {
     [self executeWork:^{
-        if(self->_opened || _readyState != PSWebSocketReadyStateConnecting) {
+        if(self->_opened || self->_readyState != PSWebSocketReadyStateConnecting) {
             [NSException raise:@"Invalid State" format:@"You cannot open a PSWebSocket more than once."];
             return;
         }
@@ -231,7 +231,7 @@
 - (void)send:(id)message {
     NSParameterAssert(message);
     [self executeWork:^{
-        if(!self->_opened || _readyState == PSWebSocketReadyStateConnecting) {
+        if(!self->_opened || self->_readyState == PSWebSocketReadyStateConnecting) {
             [NSException raise:@"Invalid State" format:@"You cannot send a PSWebSocket messages before it is finished opening."];
             return;
         }
@@ -310,7 +310,7 @@
 }
 - (void)setStreamProperty:(CFTypeRef)property forKey:(NSString *)key {
     [self executeWorkAndWait:^{
-        if(self->_opened || _readyState != PSWebSocketReadyStateConnecting) {
+        if(self->_opened || self->_readyState != PSWebSocketReadyStateConnecting) {
             [NSException raise:@"Invalid State" format:@"You cannot set stream properties on a PSWebSocket once it is opened."];
             return;
         }
@@ -516,7 +516,7 @@
         [self executeDelegate:^{
             self->_closeCode = error.code;
             self->_closeReason = error.localizedDescription;
-            [self closeWithCode:self->_closeCode reason:_closeReason];
+            [self closeWithCode:self->_closeCode reason:self->_closeReason];
             [self executeWork:^{
                 [self disconnectGracefully];
             }];
