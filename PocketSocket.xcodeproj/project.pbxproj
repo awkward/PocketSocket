@@ -423,7 +423,7 @@
 			};
 			buildConfigurationList = EEE5E30518B37DD500BAE47A /* Build configuration list for PBXProject "PocketSocket" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
