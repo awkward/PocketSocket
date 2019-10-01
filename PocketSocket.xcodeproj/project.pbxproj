@@ -91,6 +91,7 @@
 
 /* Begin PBXFileReference section */
 		275D3AE91B02811E0013B9A9 /* libPocketSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPocketSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		43B5206923436B5100808977 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = SOURCE_ROOT; };
 		EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebSocketServer.h; sourceTree = "<group>"; };
 		EE2A05DA18B5BBEC0066EEA4 /* PSWebSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWebSocketServer.m; sourceTree = "<group>"; };
 		EE337EC518B4AE28003F95B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -261,6 +262,7 @@
 		EEE5E31018B37DD500BAE47A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43B5206923436B5100808977 /* module.modulemap */,
 				EEE5E31118B37DD500BAE47A /* PocketSocket-Prefix.pch */,
 			);
 			name = "Supporting Files";
