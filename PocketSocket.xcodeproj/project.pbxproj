@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		002F7212237DA16B007A149D /* NSStream+WeakDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 002F720F237DA16B007A149D /* NSStream+WeakDelegate.m */; };
+		002F7213237DA16B007A149D /* NSStream+WeakDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 002F720F237DA16B007A149D /* NSStream+WeakDelegate.m */; };
+		002F721B237DAD20007A149D /* NSStream+WeakDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 002F720F237DA16B007A149D /* NSStream+WeakDelegate.m */; };
 		0076F9361E93E10B00E35CD0 /* PSWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E35118B37DF300BAE47A /* PSWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0076F9371E93E10E00E35CD0 /* PSWebSocketServer.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0076F9381E93E11000E35CD0 /* PSWebSocketDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = EEE5E33318B37DEC00BAE47A /* PSWebSocketDriver.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -90,6 +93,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		002F720E237DA16B007A149D /* NSStream+WeakDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSStream+WeakDelegate.h"; sourceTree = "<group>"; };
+		002F720F237DA16B007A149D /* NSStream+WeakDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSStream+WeakDelegate.m"; sourceTree = "<group>"; };
 		275D3AE91B02811E0013B9A9 /* libPocketSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPocketSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B5206923436B5100808977 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = SOURCE_ROOT; };
 		EE2A05D918B5BBEC0066EEA4 /* PSWebSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebSocketServer.h; sourceTree = "<group>"; };
@@ -282,6 +287,8 @@
 				EEE5E34018B37DEC00BAE47A /* PSWebSocketNetworkThread.m */,
 				EEE5E34118B37DEC00BAE47A /* PSWebSocketUTF8Decoder.h */,
 				EEE5E34218B37DEC00BAE47A /* PSWebSocketUTF8Decoder.m */,
+				002F720E237DA16B007A149D /* NSStream+WeakDelegate.h */,
+				002F720F237DA16B007A149D /* NSStream+WeakDelegate.m */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -477,6 +484,7 @@
 				275D3ADF1B02811E0013B9A9 /* PSWebSocketDriver.m in Sources */,
 				275D3AE01B02811E0013B9A9 /* PSWebSocketInflater.m in Sources */,
 				275D3AE11B02811E0013B9A9 /* PSWebSocketNetworkThread.m in Sources */,
+				002F7213237DA16B007A149D /* NSStream+WeakDelegate.m in Sources */,
 				275D3AE21B02811E0013B9A9 /* PSWebSocketServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +510,7 @@
 				EEE5E34318B37DEC00BAE47A /* PSWebSocketDriver.m in Sources */,
 				EEE5E34918B37DEC00BAE47A /* PSWebSocketInflater.m in Sources */,
 				EEE5E34D18B37DEC00BAE47A /* PSWebSocketNetworkThread.m in Sources */,
+				002F7212237DA16B007A149D /* NSStream+WeakDelegate.m in Sources */,
 				EE2A05DB18B5BBEC0066EEA4 /* PSWebSocketServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +521,7 @@
 			files = (
 				EEE5E37D18B380F200BAE47A /* PSWebSocketUTF8Decoder.m in Sources */,
 				EEE5E37918B380F200BAE47A /* PSWebSocketBuffer.m in Sources */,
+				002F721B237DAD20007A149D /* NSStream+WeakDelegate.m in Sources */,
 				EEE5E37B18B380F200BAE47A /* PSWebSocketDeflater.m in Sources */,
 				EEE5E37718B380F200BAE47A /* PSWebSocketDriver.m in Sources */,
 				EEE5E37418B37FC000BAE47A /* PSAutobahnClientWebSocketOperation.m in Sources */,
