@@ -16,6 +16,7 @@
 #import "PSWebSocketInternal.h"
 #import "PSWebSocketDriver.h"
 #import "PSWebSocketBuffer.h"
+#import "NSStream+WeakDelegate.h"
 #import <sys/socket.h>
 #import <arpa/inet.h>
 
@@ -338,8 +339,8 @@
     }
 
     // delegate
-    _inputStream.delegate = self;
-    _outputStream.delegate = self;
+    [_inputStream setWeakDelegate:self];
+    [_outputStream setWeakDelegate:self];
     
     // driver
     [_driver start];
@@ -380,8 +381,8 @@
     [self pumpOutput];
 }
 - (void)disconnect {
-    _inputStream.delegate = nil;
-    _outputStream.delegate = nil;
+    [_inputStream setWeakDelegate:nil];
+    [_outputStream setWeakDelegate:nil];
     
     [_inputStream close];
     [_outputStream close];
