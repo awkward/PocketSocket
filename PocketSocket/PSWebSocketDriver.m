@@ -769,15 +769,27 @@ typedef NS_ENUM(NSInteger, PSWebSocketDriverState) {
     }
     
     // Following pragma added 10/2/2019 to silence a warning produced by Xcode 11.4
+    // This particular warning was introduced with xcode11.4 - leaving the pragma
+    // visible to <11.4 causes a compiler error because it has no idea what the warning is.
+    // This requires that the line '-DXCODE_VERSION_MINOR=$(XCODE_VERSION_MINOR)' be added to
+    // OTHER_CFLAGS in the build settings (this project doesn't use xcconfigs)
+    #ifdef XCODE_VERSION_MINOR
+    #if XCODE_VERSION_MINOR >= 1140
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Wobjc-bool-constant-conversion"
+    #endif
+    #endif
     // close off pmd for zero-length frames that have a buffer otherwise they are orphaned
     if (frame->pmd && frame->payloadLength == 0 && frame->buffer.length > 0) {
         if (![_inflater end:outError]) {
             return -1;
         }
     }
+    #ifdef XCODE_VERSION_MINOR
+    #if XCODE_VERSION_MINOR >= 1140
     #pragma clang diagnostic pop
+    #endif
+    #endif
     
     // remove frames
     if(frame->control) {
