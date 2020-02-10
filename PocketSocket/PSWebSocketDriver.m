@@ -768,12 +768,16 @@ typedef NS_ENUM(NSInteger, PSWebSocketDriverState) {
         return YES;
     }
     
+    // Following pragma added 10/2/2019 to silence a warning produced by Xcode 11.4
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wobjc-bool-constant-conversion"
     // close off pmd for zero-length frames that have a buffer otherwise they are orphaned
     if (frame->pmd && frame->payloadLength == 0 && frame->buffer.length > 0) {
         if (![_inflater end:outError]) {
             return -1;
         }
     }
+    #pragma clang diagnostic pop
     
     // remove frames
     if(frame->control) {
