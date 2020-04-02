@@ -419,7 +419,7 @@
 		EEE5E30218B37DD500BAE47A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Zwopple Limited";
 				TargetAttributes = {
 					EE453D0E1CABF60300A2EA13 = {
@@ -697,6 +697,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DXCODE_VERSION_MINOR=$(XCODE_VERSION_MINOR)";
 				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Debug;
@@ -743,6 +744,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "-DXCODE_VERSION_MINOR=$(XCODE_VERSION_MINOR)";
 				SUPPORTED_PLATFORMS = macosx;
 				VALIDATE_PRODUCT = YES;
 			};
