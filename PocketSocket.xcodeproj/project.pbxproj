@@ -72,15 +72,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		275D3AE51B02811E0013B9A9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EEE5E30818B37DD500BAE47A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,7 +339,6 @@
 			buildPhases = (
 				275D3ADA1B02811E0013B9A9 /* Sources */,
 				275D3AE31B02811E0013B9A9 /* Frameworks */,
-				275D3AE51B02811E0013B9A9 /* CopyFiles */,
 				00CF692D1E93C3A30067DB2A /* Headers */,
 			);
 			buildRules = (
@@ -582,7 +572,6 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -598,7 +587,6 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PRODUCT_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
