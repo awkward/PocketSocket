@@ -218,15 +218,64 @@ typedef NS_ENUM(NSInteger, PSWebSocketDriverState) {
     BOOL secure = ([URL.scheme isEqualToString:@"https"] || [URL.scheme isEqualToString:@"wss"]);
     NSString *host = (URL.port) ? [NSString stringWithFormat:@"%@:%@", URL.host, URL.port] : URL.host;
     NSString *origin = [NSString stringWithFormat:@"http%@://%@", (secure) ? @"s" : @"", host];
-    
-    CFHTTPMessageRef msg = CFHTTPMessageCreateRequest(kCFAllocatorDefault, CFSTR("GET"), (__bridge CFURLRef)URL, kCFHTTPVersion1_1);
+
+    CFHTTPMessageRef msg;
+
+    NSDictionary *systemProxyConfig = CFBridgingRelease(CFNetworkCopySystemProxySettings());
+    BOOL useHTTPSProxy = (secure && [systemProxyConfig[(id)kCFNetworkProxiesHTTPSEnable] boolValue]);
+    BOOL useHTTPProxy = (!secure && [systemProxyConfig[(id)kCFNetworkProxiesHTTPEnable] boolValue]);
+    BOOL proxyConfigured = NO;
+
+    // Proxy stuff taken from https://stackoverflow.com/questions/7577917/how-does-a-http-proxy-utilize-the-http-protocol-a-proxy-rfc
+    // no idea if correct.
+    // Setting the http proxy the same way as the SOCKS proxy didn't work for me (returned false), probably because the stream is not
+    // and explicit HTTP stream.
+
+    if (useHTTPSProxy) {
+        // CONNECT does not want the scheme here
+        NSString *method = [NSString stringWithFormat:@"CONNECT %@", [URL resourceSpecifier]];
+        NSURLComponents *proxyComponents = [NSURLComponents new];
+        proxyComponents.scheme = @"https";
+        proxyComponents.host = systemProxyConfig[(NSString *)kCFStreamPropertyHTTPSProxyHost];
+        proxyComponents.port = systemProxyConfig[(NSString *)kCFStreamPropertyHTTPSProxyPort];
+        NSURL *proxyURL = proxyComponents.URL;
+        if (proxyURL) {
+            msg = CFHTTPMessageCreateRequest(kCFAllocatorDefault, (__bridge CFStringRef _Nonnull)(method), (__bridge CFURLRef)proxyURL, kCFHTTPVersion1_1);
+            CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Proxy-Connection"), CFSTR("keep-alive"));
+
+            // I was not sure what I should put as origin, proxy server or original URL. I tried both.
+            CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Origin"), (__bridge CFStringRef)proxyURL.absoluteString);
+            proxyConfigured = YES;
+        }
+    } else if (useHTTPProxy) {
+        // Here we want the scheme
+        NSString *method = [NSString stringWithFormat:@"GET %@", [URL absoluteString]];
+        NSURLComponents *proxyComponents = [NSURLComponents new];
+        proxyComponents.scheme = @"http";
+        proxyComponents.host = systemProxyConfig[(NSString *)kCFStreamPropertyHTTPProxyHost];
+        proxyComponents.port = systemProxyConfig[(NSString *)kCFStreamPropertyHTTPProxyPort];
+        NSURL *proxyURL = proxyComponents.URL;
+        if (proxyURL) {
+            msg = CFHTTPMessageCreateRequest(kCFAllocatorDefault, (__bridge CFStringRef _Nonnull)(method), (__bridge CFURLRef)proxyURL, kCFHTTPVersion1_1);
+            CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Proxy-Connection"), CFSTR("keep-alive"));
+            // I was not sure what I should put as origin, proxy server or original URL. I tried both.
+            CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Origin"), (__bridge CFStringRef)proxyURL.absoluteString);
+            proxyConfigured = YES;
+        }
+    }
+    if (!proxyConfigured) {
+        msg = CFHTTPMessageCreateRequest(kCFAllocatorDefault, CFSTR("GET"), (__bridge CFURLRef)URL, kCFHTTPVersion1_1);
+        // This is what we normally use as origin.
+        CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Origin"), (__bridge CFStringRef)origin);
+    }
+
+    // shared stuff... I guess?
     CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Host"), (__bridge CFStringRef)host);
     CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Connection"), CFSTR("upgrade"));
     CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Upgrade"), CFSTR("websocket"));
     CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Sec-WebSocket-Version"), CFSTR("13"));
     CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Sec-WebSocket-Key"), (__bridge CFStringRef)_handshakeSecKey);
-    CFHTTPMessageSetHeaderFieldValue(msg, CFSTR("Origin"), (__bridge CFStringRef)origin);
-    
+
     [_request.allHTTPHeaderFields enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         CFHTTPMessageSetHeaderFieldValue(msg, (__bridge CFStringRef)[NSString stringWithFormat:@"%@", key], (__bridge CFStringRef)[NSString stringWithFormat:@"%@", obj]);
     }];
